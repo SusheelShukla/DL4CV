@@ -1,0 +1,26 @@
+title: Deep Learning for Computer Vision
+author: Susheel Kumar Shukla
+copyright: "2026"
+
+logo: images/logo.png
+
+execute:
+  execute_notebooks: force
+
+repository:
+  url: https://SusheelShukla.github.io/DL4CV-Notes
+  branch: main
+
+html:
+  use_repository_button: true
+  use_issues_button: true
+  use_edit_page_button: true
+  home_page_in_navbar: true
+
+launch_buttons:
+  notebook_interface: jupyterlab
+
+sphinx:
+  config:
+    html_show_copyright: false
+    html_last_updated_fmt: "%b %d, %Y"

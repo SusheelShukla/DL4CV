@@ -1,0 +1,26 @@
+# Virtual Environments
+*.venv
+
+# Python
+__pycache__
+.DS_Store
+
+# Jupyter
+.ipynb_checkpoints
+
+# Output
+output
+
+# Cache
+.cache
+
+# Logs
+logs
+
+# Data
+data
+
+# Results
+results
+
+*.github

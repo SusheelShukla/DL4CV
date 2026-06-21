@@ -1,0 +1,18 @@
+format: jb-book
+root: intro
+
+chapters:
+  - file: Week01/Introduction_and_Overview
+  - file: Week02/Visual_Features_and_Representations
+  - file: Week03/Visual_Matching
+  - file: Week04/Deep_Learning_Review
+  - file: Week05/CNN_Architectures
+  - file: Week06/CNN_Visualization_and_Interpretation
+  - file: Week07/CNN_Detection_Segmentation_Recognition
+  - file: Week08/RNNs_and_Video_Understanding
+  - file: Week09/Attention_Models_and_Transformers
+  - file: Week10/Deep_Generative_Models
+  - file: Week11/Generative_Model_Applications
+  - file: Week12/Recent_Trends_in_Computer_Vision
+  - file: Final-Project/Final_Project
+  - file: Summary/Summary
