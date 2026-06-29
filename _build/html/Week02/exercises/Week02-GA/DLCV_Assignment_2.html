@@ -1,0 +1,969 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Welcome to Assignment 2 on Deep Learning for Computer Vision. &#8212; DeepLearningforComputerVision-Notes</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Week02/exercises/Week02-GA/DLCV_Assignment_2';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">DeepLearningforComputerVision-Notes</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Course Information</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../course/syllabus.html">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../course/software_setup.html">Software Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../course/reading_list.html">Reading List</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../course/faq.html">FAQ</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part I — Foundations</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../Week00/DL4CV_Week0.0.html">Deep Learning for Computer Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Week00/DL4CV_Week0.1.html">Activation Functions for Deep Learning</a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../../Week01/Introduction_and_Overview.html">Deep Learning for Computer Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Visual_Features_and_Representations.html">Week03: Visual Features and Representations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Week03/Visual_Matching.html">Week03: Visual Matching</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Week04/Deep_Learning_Review.html">Week04: Deep Learning Review</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part II — CNNs</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../Week05/CNN_Architectures.html">Week05: CNN Architectures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Week06/CNN_Visualization_and_Interpretation.html">Week06: CNN Visualization and Interpretation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Week07/CNN_Detection_Segmentation_Recognition.html">Week07: CNN Detection Segmentation Recognition</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part III — Sequential Models</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../Week08/RNNs_and_Video_Understanding.html">Week08: RNNs and Video Understanding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Week09/Attention_Models_and_Transformers.html">Week09: Attention Models and Transformers</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part IV — Generative AI</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../Week10/Deep_Generative_Models.html">Week10: Deep Generative Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Week11/Generative_Model_Applications.html">Week11: Generative Model Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Week12/Recent_Trends_in_Computer_Vision.html">Week12: Recent Trends in Computer Vision</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Final Project</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../Final-Project/Final_Project.html">Final-Project</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Summary</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../Summary/Summary.html">Summary and Cheatsheet</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/susheelshukla/DL4CV" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/susheelshukla/DL4CV/issues/new?title=Issue%20on%20page%20%2FWeek02/exercises/Week02-GA/DLCV_Assignment_2.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/Week02/exercises/Week02-GA/DLCV_Assignment_2.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Welcome to Assignment 2 on Deep Learning for Computer Vision.</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>Welcome to Assignment 2 on Deep Learning for Computer Vision.</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#instructions"><strong>Instructions</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-sobel-filter">Question 1: Sobel Filter</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-laplacian-filter">Question 2: Laplacian Filter</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-harris-corner-detection-algorithm">Question 3: Harris Corner Detection Algorithm</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#seteps-to-apply-sobel-operations">Seteps to Apply Sobel Operations</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1">Step-1:</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="welcome-to-assignment-2-on-deep-learning-for-computer-vision">
+<h1><strong>Welcome to Assignment 2 on Deep Learning for Computer Vision.</strong><a class="headerlink" href="#welcome-to-assignment-2-on-deep-learning-for-computer-vision" title="Permalink to this heading">#</a></h1>
+<p>In this assignment you will get a chance to implement basic image processing tasks like Edge Detection and Corner Detection.</p>
+</section>
+<section id="instructions">
+<h1><strong>Instructions</strong><a class="headerlink" href="#instructions" title="Permalink to this heading">#</a></h1>
+<ol class="arabic simple">
+<li><p>Use Python 3.x to run this notebook</p></li>
+<li><p>Write your code only in between the lines ‘YOUR CODE STARTS HERE’ and ‘YOUR CODE ENDS HERE’. You should not change anything else. If you do, the answers you are supposed to get at the end of this assignment might be wrong.</p></li>
+<li><p>Read the documentation of each function carefully.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Imports</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">PIL</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+
+<span class="c1"># %matplotlib inline uncomment this line if you&#39;re running this notebook on your local PC</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># DO NOT CHANGE THIS CODE</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">standardize</span><span class="p">(</span><span class="n">image</span><span class="p">):</span>
+    <span class="n">eps</span> <span class="o">=</span> <span class="mf">1e-5</span>  <span class="c1"># some fields have all 255 so variance will be 0, to avoid division by zero, introduced eps</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">image</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">image</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">image</span><span class="p">)</span><span class="o">+</span><span class="n">eps</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># DO NOT CHANGE THIS CODE</span>
+<span class="c1"># Linear Filtering technique on an image using a linear filter</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">linear_filter</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">filter_</span><span class="p">):</span> <span class="c1"># &#39;filter&#39; is a keyword in python, so is the underscore at the end.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Performs linear filtering on an image.</span>
+<span class="sd">    Assume image size is W1xW2, filter size is F1xF2.</span>
+
+<span class="sd">    Arguments:</span>
+<span class="sd">    image -- input image possibly with 3 channels(RGB).</span>
+<span class="sd">    filter_ -- linear filter to apply on image.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">    result -- filtered image.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">&#39;L&#39;</span><span class="p">))</span> <span class="c1"># converts image to gray scale, so that it is easy to apply filter</span>
+    <span class="n">image_height</span><span class="p">,</span> <span class="n">image_width</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">image</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="c1"># filter_ = np.array(filter_.convert(&#39;L&#39;))</span>
+    <span class="n">filter_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">filter_</span><span class="p">)</span>
+    <span class="n">filter_height</span><span class="p">,</span> <span class="n">filter_width</span> <span class="o">=</span> <span class="n">filter_</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">filter_</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="c1"># result shape will be of size --&gt; (((W1−F1+2P) / S) + 1) x (((W2−F2+2P) / S) + 1), where &#39;P&#39; is padding length</span>
+    <span class="c1"># S is stride length, if you don&#39;t know about them, don&#39;t worry, you will learn in upcoming lectures.For now</span>
+    <span class="c1"># we will use simplest setting P=0,S=1. See the next line.</span>
+
+    <span class="n">result_height</span><span class="p">,</span> <span class="n">result_width</span> <span class="o">=</span> <span class="p">(</span><span class="n">image_height</span> <span class="o">-</span> <span class="n">filter_height</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="n">image_width</span> <span class="o">-</span> <span class="n">filter_width</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">result_width</span><span class="p">)]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">result_height</span><span class="p">)])</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">result_height</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">result_width</span><span class="p">):</span>
+            <span class="n">temp</span> <span class="o">=</span> <span class="n">standardize</span><span class="p">(</span><span class="n">image</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">filter_height</span><span class="o">+</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">:</span><span class="n">filter_width</span><span class="o">+</span><span class="n">j</span><span class="p">])</span> <span class="o">*</span> <span class="n">filter_</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">result</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;something went wrong&quot;</span><span class="p">,</span> <span class="n">err</span><span class="p">)</span>
+                <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># DO NOT CHANGE THIS CODE</span>
+<span class="c1"># Convolution on an image using a filter/kernel</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">convolution2D</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">kernel</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Performs convolution on an image using a kernel.</span>
+
+<span class="sd">    Arguments:</span>
+<span class="sd">    image -- 2D matrix representing image.</span>
+<span class="sd">    kernel -- kernel to apply on image.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">    result -- filtered image.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">kernel</span><span class="p">)</span>
+    <span class="c1"># kernel_new = kernel.transpose(Image.FLIP_TOP_BOTTOM).transpose(Image.FLIP_LEFT_RIGHT)</span>
+    <span class="c1"># # kernel_new = np.flipud(np.fliplr(kernel))</span>
+    <span class="n">kernel_new</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">flip</span><span class="p">(</span><span class="n">kernel</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">linear_filter</span><span class="p">(</span><span class="n">image</span><span class="p">,</span><span class="n">kernel_new</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="question-1-sobel-filter">
+<h1>Question 1: Sobel Filter<a class="headerlink" href="#question-1-sobel-filter" title="Permalink to this heading">#</a></h1>
+<p>In this question you’ll have to apply a Sobel Filter to the provided image and report the index of min and max value of the final output.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">cm</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="kn">import</span> <span class="n">unravel_index</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;edges_image.png&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">&#39;L&#39;</span><span class="p">)</span>
+
+<span class="c1">### YOUR CODE STARTS HERE</span>
+
+<span class="c1"># Define 3*3 Vertical sobel filter (Hint: refer lecture slides)</span>
+<span class="n">sobel_v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int8</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;F&#39;</span><span class="p">)</span>
+
+<span class="c1"># Define 3*3 Horizontal sobel filter (Hint: refer lecture slides)</span>
+<span class="n">sobel_h</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int8</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;F&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">sobel_v</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">sobel_h</span><span class="p">)</span>
+<span class="c1"># # Compute vertical response using convolution2D function</span>
+<span class="n">response_v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">convolution2D</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">sobel_v</span><span class="p">))</span>
+
+<span class="c1"># Compute horizontal response using convolution2D function</span>
+<span class="n">response_h</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">convolution2D</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">sobel_h</span><span class="p">))</span>
+
+<span class="c1"># Compute final response</span>
+<span class="c1"># G = |G_x| + |G_y|</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">response_v</span> <span class="o">+</span> <span class="n">response_h</span>
+
+<span class="c1"># Compute index of min and max value of G</span>
+<span class="n">min_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unravel_index</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">G</span><span class="p">),</span> <span class="n">G</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">max_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unravel_index</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">G</span><span class="p">),</span> <span class="n">G</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="c1">### YOUR CODE ENDS HERE</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-1  0  1]
+ [-2  0  2]
+ [-1  0  1]] 
+ [[-1 -2 -1]
+ [ 0  0  0]
+ [ 1  2  1]]
+[[-1  0  1]
+ [-2  0  2]
+ [-1  0  1]]
+[[-1 -2 -1]
+ [ 0  0  0]
+ [ 1  2  1]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Min:&quot;</span><span class="p">,</span> <span class="n">min_index</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Max:&quot;</span><span class="p">,</span> <span class="n">max_index</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Min: (np.int64(0), np.int64(0))
+Max: (np.int64(111), np.int64(16))
+</pre></div>
+</div>
+</div>
+</div>
+<p>What are index of the min and max values in the <code class="docutils literal notranslate"><span class="pre">G</span></code> image?</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\((52, 147), (111, 26)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\((0, 0), (108, 107)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\((56, 152), (116, 18)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\((51, 143), (114, 24)\)</span></p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># DO NOT CHANGE THIS CODE</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Input Image&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Sobel Filter Output&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">ax</span><span class="p">:</span>
+    <span class="n">a</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/d56d34440d26665aee30507642f9fccf26ea08737d080e02fe529ff2c2f1a2b6.png" src="../../../_images/d56d34440d26665aee30507642f9fccf26ea08737d080e02fe529ff2c2f1a2b6.png" />
+</div>
+</div>
+</section>
+<section id="question-2-laplacian-filter">
+<h1>Question 2: Laplacian Filter<a class="headerlink" href="#question-2-laplacian-filter" title="Permalink to this heading">#</a></h1>
+<p>In this question you’ll have to apply a Laplacian Filter to the provided image and report the index of min and max value of the final output.</p>
+<p>What are index of the min and max values of the Laplacian Filter response to the provided image?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;edges_image.png&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">&#39;L&#39;</span><span class="p">)</span>
+
+<span class="c1">### YOUR CODE STARTS HERE</span>
+
+<span class="c1"># Define 3*3 Laplace filter (Hint: refer lecture slides)</span>
+<span class="n">laplace</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int8</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;F&#39;</span><span class="p">)</span>
+
+<span class="c1"># Compute response using convolution2D function</span>
+<span class="n">response_h</span> <span class="o">=</span> <span class="n">convolution2D</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">laplace</span><span class="p">)</span>
+
+<span class="n">response_v</span> <span class="o">=</span> <span class="n">convolution2D</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">laplace</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+
+<span class="c1"># Compute final response</span>
+<span class="c1"># G = |G_x| + |G_y|</span>
+<span class="n">response_L</span> <span class="o">=</span> <span class="n">response_h</span> <span class="o">+</span> <span class="n">response_v</span>
+
+
+<span class="c1"># Compute index of min and max value of Laplace Filter response</span>
+<span class="n">min_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unravel_index</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">response_L</span><span class="p">),</span> <span class="n">response_L</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">max_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unravel_index</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">response_L</span><span class="p">),</span> <span class="n">response_L</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="c1">### YOUR CODE ENDS HERE</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 0  1  0]
+ [ 1 -4  1]
+ [ 0  1  0]]
+[[ 0  1  0]
+ [ 1 -4  1]
+ [ 0  1  0]]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>((np.int64(17), np.int64(136)), (np.int64(203), np.int64(136)))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Min:&quot;</span><span class="p">,</span> <span class="n">min_</span><span class="p">),</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Max:&quot;</span><span class="p">,</span> <span class="n">max_</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Min: (np.int64(17), np.int64(136))
+Max: (np.int64(203), np.int64(136))
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(None, None)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># DO NOT CHANGE THIS CODE</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Input Image&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">response_L</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Laplace Filter Output&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">ax</span><span class="p">:</span>
+    <span class="n">a</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/8a94f5cff51bee0c0b9ab690e738cc915959b30354391f6e14344b93a8fbd8ed.png" src="../../../_images/8a94f5cff51bee0c0b9ab690e738cc915959b30354391f6e14344b93a8fbd8ed.png" />
+</div>
+</div>
+<p>What are index of the min and max values in the <code class="docutils literal notranslate"><span class="pre">response_L</span></code> image?</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\((4, 117), (111, 26)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\((49, 176), (110, 27)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\((203, 136), (17, 136)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\((10, 104), (106, 22)\)</span></p></li>
+</ol>
+</section>
+<section id="question-3-harris-corner-detection-algorithm">
+<h1>Question 3: Harris Corner Detection Algorithm<a class="headerlink" href="#question-3-harris-corner-detection-algorithm" title="Permalink to this heading">#</a></h1>
+<p>Find the number of detected corner points in a given image using Harris Corner Detection Algorithm. Note that, the following criterion MUST be satisfied while applying Harris Corner detection Algorithm:</p>
+<ol class="arabic simple">
+<li><p>The size of neighbourhood considered for corner detection = 2.</p></li>
+<li><p>Aperture parameter of Sobel derivative used = 3.</p></li>
+<li><p>Harris detector free parameter in the equation = 0.04.</p></li>
+</ol>
+<p>How many corners are detected?</p>
+<ol class="arabic simple">
+<li><p>1491</p></li>
+<li><p>807</p></li>
+<li><p>1068</p></li>
+<li><p>796</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import matplotlib.pyplot as plt</span>
+<span class="c1"># import numpy as np</span>
+<span class="c1"># import cv2</span>
+
+<span class="c1"># %matplotlib inline</span>
+
+<span class="c1"># # Read in the image</span>
+<span class="c1"># image = cv2.imread(&#39;./corner_image.jpg&#39;)</span>
+
+<span class="c1"># # Make a copy of the image</span>
+<span class="c1"># image_copy = np.copy(image)</span>
+
+<span class="c1"># # Change color to RGB (from BGR)</span>
+<span class="c1"># # image_copy = cv2.cvtColor(image_copy, cv2.COLOR_BGR2RGB, src=image_copy)</span>
+
+<span class="c1"># ### YOUR CODE STARTS HERE</span>
+
+<span class="c1"># ## STEP 1:  Convert to grayscale (Hint: use cv2.cvtColor)</span>
+
+
+<span class="c1"># ## STEP 2: Detect corners (Hint:  cv2.cornerHarris)</span>
+
+<span class="c1"># ## STEP 3: Dilate corner image to enhance corner points (Hint: use cv2.dilate)</span>
+
+<span class="c1"># ## STEP 4:set threshold value as 0.1 * (maximum value of dilated corner image obtained from STEP3)</span>
+
+<span class="c1"># ## STEP 5: Count numer of detected corner points and draw them on the image</span>
+
+<span class="c1"># # Compute number of corners</span>
+
+<span class="c1"># # Draw corners on the image</span>
+
+<span class="c1"># # show the image</span>
+
+<span class="c1"># ### YOUR CODE ENDS HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># My code for NPTEL course slides</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">cv2</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="c1"># Read in the image</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;./corner_image.jpg&#39;</span><span class="p">)</span>
+
+<span class="c1"># Make a copy of the image</span>
+<span class="n">image_copy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+
+<span class="c1"># shape of image</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">image_copy</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="p">[</span><span class="n">height</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">channels</span><span class="p">]</span> <span class="o">=</span> <span class="n">image_copy</span><span class="o">.</span><span class="n">shape</span>
+<span class="c1"># extracting each RGB component form each pixel</span>
+<span class="n">r_img</span><span class="p">,</span> <span class="n">g_img</span><span class="p">,</span> <span class="n">b_img</span> <span class="o">=</span> <span class="n">image_copy</span><span class="p">[:,:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">image_copy</span><span class="p">[:,:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">image_copy</span><span class="p">[:,:,</span><span class="mi">2</span><span class="p">]</span>
+
+<span class="c1"># converting each channel to gray scale</span>
+<span class="n">gamma</span> <span class="o">=</span> <span class="mf">0.4</span>
+
+<span class="c1"># weight for the RGB constructed image</span>
+<span class="n">r_const</span><span class="p">,</span> <span class="n">g_const</span><span class="p">,</span> <span class="n">b_const</span> <span class="o">=</span> <span class="mf">0.2126</span><span class="p">,</span> <span class="mf">0.7152</span><span class="p">,</span> <span class="mf">0.0722</span>
+
+<span class="c1"># converting each channel to gray scale</span>
+<span class="n">grayscale_image</span> <span class="o">=</span> <span class="n">r_const</span> <span class="o">*</span> <span class="n">r_img</span><span class="o">**</span><span class="n">gamma</span> <span class="o">+</span> <span class="n">g_const</span> <span class="o">*</span> <span class="n">g_img</span><span class="o">**</span><span class="n">gamma</span> <span class="o">+</span> <span class="n">b_const</span> <span class="o">*</span> <span class="n">b_img</span><span class="o">**</span><span class="n">gamma</span>
+
+<span class="c1"># show the image </span>
+<span class="n">fig_1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax_1</span><span class="p">,</span> <span class="n">ax_2</span> <span class="o">=</span> <span class="n">fig_1</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">),</span> <span class="n">fig_1</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+<span class="n">ax_1</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image_copy</span><span class="p">)</span>
+<span class="n">ax_2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">grayscale_image</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s1">&#39;gray&#39;</span><span class="p">))</span>
+<span class="n">fig_1</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(224, 224, 3)
+</pre></div>
+</div>
+<img alt="../../../_images/cd1b23f8ca2254ca7e8db2d65227ac61232147398bf0cedeb0e638671f6febb2.png" src="../../../_images/cd1b23f8ca2254ca7e8db2d65227ac61232147398bf0cedeb0e638671f6febb2.png" />
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="seteps-to-apply-sobel-operations">
+<h1>Seteps to Apply Sobel Operations<a class="headerlink" href="#seteps-to-apply-sobel-operations" title="Permalink to this heading">#</a></h1>
+<section id="step-1">
+<h2>Step-1:<a class="headerlink" href="#step-1" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Applying sobel operation</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Week02/exercises/Week02-GA"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>Welcome to Assignment 2 on Deep Learning for Computer Vision.</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#instructions"><strong>Instructions</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-sobel-filter">Question 1: Sobel Filter</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-laplacian-filter">Question 2: Laplacian Filter</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-harris-corner-detection-algorithm">Question 3: Harris Corner Detection Algorithm</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#seteps-to-apply-sobel-operations">Seteps to Apply Sobel Operations</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1">Step-1:</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Susheel Kumar Shukla
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
