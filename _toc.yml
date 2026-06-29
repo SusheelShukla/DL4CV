@@ -1,18 +1,45 @@
 format: jb-book
+
 root: intro
 
-chapters:
-  - file: Week01/Introduction_and_Overview
-  - file: Week02/Visual_Features_and_Representations
-  - file: Week03/Visual_Matching
-  - file: Week04/Deep_Learning_Review
-  - file: Week05/CNN_Architectures
-  - file: Week06/CNN_Visualization_and_Interpretation
-  - file: Week07/CNN_Detection_Segmentation_Recognition
-  - file: Week08/RNNs_and_Video_Understanding
-  - file: Week09/Attention_Models_and_Transformers
-  - file: Week10/Deep_Generative_Models
-  - file: Week11/Generative_Model_Applications
-  - file: Week12/Recent_Trends_in_Computer_Vision
-  - file: Final-Project/Final_Project
-  - file: Summary/Summary
+parts:
+  - caption: Course Information
+    chapters:
+      - file: course/syllabus
+      - file: course/software_setup
+      - file: course/reading_list
+      - file: course/faq
+
+  - caption: Part I — Foundations
+    chapters:
+      - file: Week00/DL4CV_Week0.0
+      - file: Week00/DL4CV_Week0.1
+      - file: Week01/Introduction_and_Overview
+      - file: Week02/Visual_Features_and_Representations
+      - file: Week03/Visual_Matching
+      - file: Week04/Deep_Learning_Review
+
+  - caption: Part II — CNNs
+    chapters:
+      - file: Week05/CNN_Architectures
+      - file: Week06/CNN_Visualization_and_Interpretation
+      - file: Week07/CNN_Detection_Segmentation_Recognition
+
+  - caption: Part III — Sequential Models
+    chapters:
+      - file: Week08/RNNs_and_Video_Understanding
+      - file: Week09/Attention_Models_and_Transformers
+
+  - caption: Part IV — Generative AI
+    chapters:
+      - file: Week10/Deep_Generative_Models
+      - file: Week11/Generative_Model_Applications
+      - file: Week12/Recent_Trends_in_Computer_Vision
+
+  - caption: Final Project
+    chapters:
+      - file: Final-Project/Final_Project
+
+  - caption: Summary
+    chapters:
+      - file: Summary/Summary
