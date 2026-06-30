@@ -1,0 +1,1102 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Basics/pre-requisite for this course &#8212; DeepLearningforComputerVision-Notes</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Week00/DL4CV_Week0.0';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Activation Functions for Deep Learning" href="DL4CV_Week0.1.html" />
+    <link rel="prev" title="FAQ" href="../course/faq.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">DeepLearningforComputerVision-Notes</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Course Information</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../course/syllabus.html">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../course/software_setup.html">Software Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../course/reading_list.html">Reading List: Prescribed Books</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../course/faq.html">FAQ</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part I — Foundations</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Basics/pre-requisite for this course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DL4CV_Week0.1.html">Activation Functions for Deep Learning</a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Week01/Introduction_and_Overview.html">Week01: Introduction and Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Week02/Visual_Features_and_Representations.html">Week03: Visual Features and Representations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Week03/Visual_Matching.html">Week03: Visual Matching</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Week04/Deep_Learning_Review.html">Week04: Deep Learning Review</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part II — CNNs</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Week05/CNN_Architectures.html">Week05: CNN Architectures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Week06/CNN_Visualization_and_Interpretation.html">Week06: CNN Visualization and Interpretation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Week07/CNN_Detection_Segmentation_Recognition.html">Week07: CNN Detection Segmentation Recognition</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part III — Sequential Models</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Week08/RNNs_and_Video_Understanding.html">Week08: RNNs and Video Understanding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Week09/Attention_Models_and_Transformers.html">Week09: Attention Models and Transformers</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part IV — Generative AI</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Week10/Deep_Generative_Models.html">Week10: Deep Generative Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Week11/Generative_Model_Applications.html">Week11: Generative Model Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Week12/Recent_Trends_in_Computer_Vision.html">Week12: Recent Trends in Computer Vision</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Final Project</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Final-Project/Final_Project.html">Final-Project</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Summary</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Summary/Summary.html">Summary and Cheatsheet</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/susheelshukla/DL4CV" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/susheelshukla/DL4CV/issues/new?title=Issue%20on%20page%20%2FWeek00/DL4CV_Week0.0.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Week00/DL4CV_Week0.0.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Basics/pre-requisite for this course</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#em-deep-learning-for-computer-vision-em"><em>Deep Learning for Computer Vision<em></em></em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculus-derivatives-cheat-sheet">Calculus Derivatives Cheat Sheet</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-rules">Basic Rules</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exponential-functions">Exponential Functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logarithmic-functions">Logarithmic Functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trigonometric-functions">Trigonometric Functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inverse-trigonometric-functions">Inverse Trigonometric Functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hyperbolic-functions">Hyperbolic Functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#derivative-rules">Derivative Rules</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#common-composite-derivatives">Common Composite Derivatives</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#special-forms">Special Forms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#derivatives-for-machine-learning-and-computer-vision">Derivatives for Machine Learning and Computer Vision</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-polynomial-function">Example 1: Polynomial Function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-chain-rule">Example 2: Chain Rule</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-exponential-function">Example 3: Exponential Function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-logarithmic-function">Example 4: Logarithmic Function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Solution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-5-sigmoid-function">Example 5: Sigmoid Function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Solution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-6-mean-squared-error-mse">Example 6: Mean Squared Error (MSE)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Solution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-7-linear-regression-gradient">Example 7: Linear Regression Gradient</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Solution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-8-softmax-cross-entropy-simplified">Example 8: Softmax Cross Entropy (Simplified)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Solution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-ml-derivatives-summary">Key ML Derivatives Summary</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-memory-list-for-ml">Quick Memory List for ML</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="basics-pre-requisite-for-this-course">
+<h1>Basics/pre-requisite for this course<a class="headerlink" href="#basics-pre-requisite-for-this-course" title="Permalink to this heading">#</a></h1>
+<section id="em-deep-learning-for-computer-vision-em">
+<h2><em>Deep Learning for Computer Vision<em/><a class="headerlink" href="#em-deep-learning-for-computer-vision-em" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="calculus-derivatives-cheat-sheet">
+<h2>Calculus Derivatives Cheat Sheet<a class="headerlink" href="#calculus-derivatives-cheat-sheet" title="Permalink to this heading">#</a></h2>
+<hr class="docutils" />
+<section id="basic-rules">
+<h3>Basic Rules<a class="headerlink" href="#basic-rules" title="Permalink to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Function</p></th>
+<th class="head"><p>Derivative</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(c\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(x\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(x^n\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(n x^{n-1}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\sqrt{x}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{1}{2\sqrt{x}}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\frac{1}{x}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(-\frac{1}{x^2}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\frac{1}{x^n}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(-\frac{n}{x^{n+1}}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="exponential-functions">
+<h3>Exponential Functions<a class="headerlink" href="#exponential-functions" title="Permalink to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Function</p></th>
+<th class="head"><p>Derivative</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(e^x\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(e^x\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(a^x\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(a^x \ln a\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(e^{u}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(e^{u} \cdot u'\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(a^{u}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(a^{u}\ln(a)\cdot u'\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="logarithmic-functions">
+<h3>Logarithmic Functions<a class="headerlink" href="#logarithmic-functions" title="Permalink to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Function</p></th>
+<th class="head"><p>Derivative</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\ln x\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{1}{x}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\log_a x\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{1}{x\ln a}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\ln(u)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{u'}{u}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="trigonometric-functions">
+<h3>Trigonometric Functions<a class="headerlink" href="#trigonometric-functions" title="Permalink to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Function</p></th>
+<th class="head"><p>Derivative</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\sin x\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\cos x\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\cos x\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(-\sin x\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\tan x\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\sec^2 x\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\cot x\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(-\csc^2 x\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\sec x\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\sec x \tan x\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\csc x\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(-\csc x \cot x\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="inverse-trigonometric-functions">
+<h3>Inverse Trigonometric Functions<a class="headerlink" href="#inverse-trigonometric-functions" title="Permalink to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Function</p></th>
+<th class="head"><p>Derivative</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\sin^{-1}x\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{1}{\sqrt{1-x^2}}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\cos^{-1}x\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(-\frac{1}{\sqrt{1-x^2}}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\tan^{-1}x\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{1}{1+x^2}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\cot^{-1}x\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(-\frac{1}{1+x^2}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\sec^{-1}x\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{1}{\sqrt{x^2-1}}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\csc^{-1}x\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(-\frac{1}{\sqrt{x^2-1}}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="hyperbolic-functions">
+<h3>Hyperbolic Functions<a class="headerlink" href="#hyperbolic-functions" title="Permalink to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Function</p></th>
+<th class="head"><p>Derivative</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\sinh x\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\cosh x\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\cosh x\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\sinh x\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\tanh x\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\text{sech}^2x\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\coth x\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(-\text{csch}^2x\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\text{sech}x\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(-\text{sech}x\tanh x\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\text{csch}x\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(-\text{csch}x\coth x\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="derivative-rules">
+<h3>Derivative Rules<a class="headerlink" href="#derivative-rules" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Constant Multiple Rule:</strong> <span class="math notranslate nohighlight">\(\frac{d}{dx}[c f(x)] = c f'(x)\)</span></p></li>
+<li><p><strong>Sum Rule:</strong> <span class="math notranslate nohighlight">\(\frac{d}{dx}[f(x)+g(x)] = f'(x)+g'(x)\)</span></p></li>
+<li><p><strong>Difference Rule:</strong> <span class="math notranslate nohighlight">\(\frac{d}{dx}[f(x)-g(x)] = f'(x)-g'(x)\)</span></p></li>
+<li><p><strong>Product Rule:</strong> <span class="math notranslate nohighlight">\(\frac{d}{dx}[f(x)g(x)] = f'(x)g(x)+f(x)g'(x)\)</span></p></li>
+<li><p><strong>Quotient Rule:</strong> <span class="math notranslate nohighlight">\(\frac{d}{dx}\left[\frac{f(x)}{g(x)}\right] = \frac{g(x)f'(x)-f(x)g'(x)} {(g(x))^2}\)</span></p></li>
+<li><p><strong>Chain Rule:</strong> <span class="math notranslate nohighlight">\(\frac{d}{dx}[f(g(x))] = f'(g(x))\cdot g'(x)\)</span></p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="common-composite-derivatives">
+<h3>Common Composite Derivatives<a class="headerlink" href="#common-composite-derivatives" title="Permalink to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Function</p></th>
+<th class="head"><p>Derivative</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\sin(u)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\cos(u),u'\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\cos(u)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(-\sin(u),u'\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\tan(u)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\sec^2(u),u'\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\ln(u)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{u'}{u}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(e^u\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(e^u u'\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\((u)^n\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(n(u)^{n-1}u'\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\sqrt{u}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{u'}{2\sqrt{u}}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="special-forms">
+<h2>Special Forms<a class="headerlink" href="#special-forms" title="Permalink to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Function</p></th>
+<th class="head"><p>Derivative</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(x^x\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(x^x(1+\ln x)\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\ln|x|\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{1}{x}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(|x|\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{x}{|x|}\)</span>, for <span class="math notranslate nohighlight">\(x \neq 0\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\frac{1}{f(x)}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(-\frac{f'(x)}{[f(x)]^2}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\([f(x)]^n\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(n[f(x)]^{n-1}f'(x)\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\sqrt{f(x)}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{f'(x)}{2\sqrt{f(x)}}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\ln(f(x))\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{f'(x)}{f(x)}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(e^{f(x)}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(e^{f(x)}f'(x)\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(a^{f(x)}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(a^{f(x)}\ln(a)\,f'(x)\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="derivatives-for-machine-learning-and-computer-vision">
+<h2>Derivatives for Machine Learning and Computer Vision<a class="headerlink" href="#derivatives-for-machine-learning-and-computer-vision" title="Permalink to this heading">#</a></h2>
+<section id="example-1-polynomial-function">
+<h3>Example 1: Polynomial Function<a class="headerlink" href="#example-1-polynomial-function" title="Permalink to this heading">#</a></h3>
+<p><strong>Problem:</strong> Find the derivative of <span class="math notranslate nohighlight">\(f(x)=3x^4+2x^2-5x+7\)</span></p>
+<p><strong>Solution</strong></p>
+<p><span class="math notranslate nohighlight">\(\begin{aligned}
+f'(x)
+&amp;= \frac{d}{dx}(3x^4+2x^2-5x+7) \\
+&amp;= \frac{d}{dx}(3x^4)+\frac{d}{dx}(2x^2)+\frac{d}{dx}(-5x)+\frac{d}{dx}(7) \\
+&amp;= 12x^3+4x-5+0 \\
+&amp;= 12x^3+4x-5
+\end{aligned}\)</span></p>
+<p><strong>Answer:</strong> <span class="math notranslate nohighlight">\(\boxed{f'(x)=12x^3+4x-5}\)</span></p>
+</section>
+<hr class="docutils" />
+<section id="example-2-chain-rule">
+<h3>Example 2: Chain Rule<a class="headerlink" href="#example-2-chain-rule" title="Permalink to this heading">#</a></h3>
+<p>Find</p>
+<p><span class="math notranslate nohighlight">\(
+\frac{d}{dx}(x^2+1)^5
+\)</span></p>
+<p><strong>Solution:</strong></p>
+<p><span class="math notranslate nohighlight">\(\begin{aligned}
+&amp;\text{Let u} = x^2+1, \\
+&amp; Then f(x) = u^5 \\
+&amp; \text{Differentiate outer function first.} \\
+&amp; \frac{d}{du}(u^5) = 5u^4 \\
+&amp; \text{Differentiate inner function.} \\
+&amp; \frac{du}{dx} = 2x \\
+&amp; \text{Apply Chain Rule.} \\
+&amp; \frac{df}{dx} = 5u^4 \cdot 2x \\
+&amp; \text{Substitute back.} \\
+&amp; \boxed{\frac{d}{dx}(x^2+1)^5 = 10x(x^2+1)^4} \\
+\end{aligned}\)</span></p>
+</section>
+<hr class="docutils" />
+<section id="example-3-exponential-function">
+<h3>Example 3: Exponential Function<a class="headerlink" href="#example-3-exponential-function" title="Permalink to this heading">#</a></h3>
+<p>Find</p>
+<p><span class="math notranslate nohighlight">\(
+\frac{d}{dx}(e^{3x})
+\)</span></p>
+</section>
+<section id="solution">
+<h3>Solution<a class="headerlink" href="#solution" title="Permalink to this heading">#</a></h3>
+<p><span class="math notranslate nohighlight">\(\begin{aligned}
+&amp; \text{Use } \frac{d}{dx}(e^u)=e^u\frac{du}{dx} \\
+&amp; \text{Let } u = 3x \\
+&amp; \frac{du}{dx} = 3 \\
+&amp; \text{Apply the Chain Rule.} \\
+&amp; \frac{d}{dx}(e^{3x}) = e^u \cdot 3 \\
+&amp; \text{Substitute back.} \\
+&amp; \boxed{\frac{d}{dx}(e^{3x}) = 3e^{3x}} \\
+\end{aligned}\)</span></p>
+</section>
+<hr class="docutils" />
+<section id="example-4-logarithmic-function">
+<h3>Example 4: Logarithmic Function<a class="headerlink" href="#example-4-logarithmic-function" title="Permalink to this heading">#</a></h3>
+<p>Find</p>
+<p><span class="math notranslate nohighlight">\(
+\frac{d}{dx}\ln(x^2+1)
+\)</span></p>
+</section>
+<section id="id1">
+<h3>Solution<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<p><span class="math notranslate nohighlight">\(\begin{aligned}
+&amp; \text{Use } \frac{d}{dx}\ln(u)=\frac{u'}{u} \\
+&amp; \text{Let } u = x^2+1 \\
+&amp; \frac{du}{dx} = 2x \\
+&amp; \text{Substitute into the formula.} \\
+&amp; \boxed{\frac{d}{dx}\ln(x^2+1)=\frac{2x}{x^2+1}} \\
+\end{aligned}\)</span></p>
+</section>
+<hr class="docutils" />
+<section id="example-5-sigmoid-function">
+<h3>Example 5: Sigmoid Function<a class="headerlink" href="#example-5-sigmoid-function" title="Permalink to this heading">#</a></h3>
+<p>Find derivative of</p>
+<p><span class="math notranslate nohighlight">\(
+\sigma(x)=\frac{1}{1+e^{-x}}
+\)</span></p>
+</section>
+<section id="id2">
+<h3>Solution<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<p><span class="math notranslate nohighlight">\(\begin{aligned}
+&amp; \text{Rewrite as } \sigma(x)=(1+e^{-x})^{-1} \\
+&amp; \text{Differentiate using the Chain Rule.} \\
+&amp; \sigma'(x)=-(1+e^{-x})^{-2}(-e^{-x}) \\
+&amp; \text{Simplify.} \\
+&amp; \sigma'(x)=\frac{e^{-x}}{(1+e^{-x})^2} \\
+&amp; \text{Express in terms of } \sigma(x). \\
+&amp; \boxed{\sigma'(x)=\sigma(x)(1-\sigma(x))} \\
+\end{aligned}\)</span></p>
+</section>
+<hr class="docutils" />
+<section id="example-6-mean-squared-error-mse">
+<h3>Example 6: Mean Squared Error (MSE)<a class="headerlink" href="#example-6-mean-squared-error-mse" title="Permalink to this heading">#</a></h3>
+<p>Find</p>
+<p><span class="math notranslate nohighlight">\(
+\frac{dL}{d\hat y}
+\)</span></p>
+<p>given</p>
+<p><span class="math notranslate nohighlight">\(
+L=(y-\hat y)^2
+\)</span></p>
+</section>
+<section id="id3">
+<h3>Solution<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<p><span class="math notranslate nohighlight">\(\begin{aligned}
+&amp; \text{Let } u = y-\hat y \\
+&amp; \text{Then } L=u^2 \\
+&amp; \text{Differentiate outer function first.} \\
+&amp; \frac{dL}{du}=2u \\
+&amp; \text{Differentiate inner function.} \\
+&amp; \frac{du}{d\hat y}=-1 \\
+&amp; \text{Apply the Chain Rule.} \\
+&amp; \frac{dL}{d\hat y}=2u(-1) \\
+&amp; \text{Substitute back.} \\
+&amp; \boxed{\frac{dL}{d\hat y}=-2(y-\hat y)=2(\hat y-y)} \\
+\end{aligned}\)</span></p>
+</section>
+<hr class="docutils" />
+<section id="example-7-linear-regression-gradient">
+<h3>Example 7: Linear Regression Gradient<a class="headerlink" href="#example-7-linear-regression-gradient" title="Permalink to this heading">#</a></h3>
+<p>Find</p>
+<p><span class="math notranslate nohighlight">\(
+\frac{dL}{dw}
+\)</span></p>
+<p>given</p>
+<p><span class="math notranslate nohighlight">\(
+\hat y=wx+b
+\)</span></p>
+<p>and</p>
+<p><span class="math notranslate nohighlight">\(
+L=(y-\hat y)^2
+\)</span></p>
+</section>
+<section id="id4">
+<h3>Solution<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<p><span class="math notranslate nohighlight">\(\begin{aligned}
+&amp; \text{Substitute } \hat y=wx+b \\
+&amp; L=(y-(wx+b))^2 \\
+&amp; \text{Let } u=y-(wx+b) \\
+&amp; \text{Then } L=u^2 \\
+&amp; \text{Differentiate outer function first.} \\
+&amp; \frac{dL}{du}=2u \\
+&amp; \text{Differentiate inner function.} \\
+&amp; \frac{du}{dw}=-x \\
+&amp; \text{Apply the Chain Rule.} \\
+&amp; \frac{dL}{dw}=2u(-x) \\
+&amp; \text{Substitute back.} \\
+&amp; \boxed{\frac{dL}{dw}=-2x(y-\hat y)} \\
+\end{aligned}\)</span></p>
+</section>
+<hr class="docutils" />
+<section id="example-8-softmax-cross-entropy-simplified">
+<h3>Example 8: Softmax Cross Entropy (Simplified)<a class="headerlink" href="#example-8-softmax-cross-entropy-simplified" title="Permalink to this heading">#</a></h3>
+<p>Find</p>
+<p><span class="math notranslate nohighlight">\(
+\frac{dL}{dp}
+\)</span></p>
+<p>given</p>
+<p><span class="math notranslate nohighlight">\(
+L=-\log(p)
+\)</span></p>
+</section>
+<section id="id5">
+<h3>Solution<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<p><span class="math notranslate nohighlight">\(\begin{aligned}
+&amp; \text{Use } \frac{d}{dp}\ln(p)=\frac{1}{p} \\
+&amp; \text{Differentiate.} \\
+&amp; \frac{dL}{dp}=-\frac{1}{p} \\
+&amp; \boxed{\frac{dL}{dp}=-\frac{1}{p}} \\
+\end{aligned}\)</span></p>
+</section>
+<hr class="docutils" />
+<section id="key-ml-derivatives-summary">
+<h3>Key ML Derivatives Summary<a class="headerlink" href="#key-ml-derivatives-summary" title="Permalink to this heading">#</a></h3>
+</section>
+</section>
+<section id="quick-memory-list-for-ml">
+<h2>Quick Memory List for ML<a class="headerlink" href="#quick-memory-list-for-ml" title="Permalink to this heading">#</a></h2>
+<p><span class="math notranslate nohighlight">\(\boxed{\frac{d}{dx}(c)=0}\\ \)</span></p>
+<p><span class="math notranslate nohighlight">\(\boxed{\frac{d}{dx}(x)=1}\\ \)</span></p>
+<p><span class="math notranslate nohighlight">\(\boxed{\frac{d}{dx}(x^n)=nx^{n-1}}\\ \)</span></p>
+<p><span class="math notranslate nohighlight">\(\boxed{\frac{d}{dx}\left(\frac{1}{x}\right)=-\frac{1}{x^2}}\\ \)</span></p>
+<p><span class="math notranslate nohighlight">\(\boxed{\frac{d}{dx}(e^x)=e^x}\\ \)</span></p>
+<p><span class="math notranslate nohighlight">\(\boxed{\frac{d}{dx}(a^x)=a^x\ln(a)}\\ \)</span></p>
+<p><span class="math notranslate nohighlight">\(\boxed{\frac{d}{dx}(\ln x)=\frac{1}{x}}\\ \)</span></p>
+<p><span class="math notranslate nohighlight">\(\boxed{\frac{d}{dx}(\sin x)=\cos x}\\ \)</span></p>
+<p><span class="math notranslate nohighlight">\(\boxed{\frac{d}{dx}(\cos x)=-\sin x}\\ \)</span></p>
+<p><span class="math notranslate nohighlight">\(\boxed{\frac{d}{dx}(\tan x)=\sec^2x}\\ \)</span></p>
+<p><span class="math notranslate nohighlight">\(\boxed{\frac{d}{dx}(\arcsin x)=\frac{1}{\sqrt{1-x^2}}}\\ \)</span></p>
+<p><span class="math notranslate nohighlight">\(\boxed{\frac{d}{dx}(\arctan x)=\frac{1}{1+x^2}}\\ \)</span></p>
+<p><span class="math notranslate nohighlight">\(\textbf{Product Rule:}\\ \)</span>
+<span class="math notranslate nohighlight">\(\boxed{\frac{d}{dx}(fg)=f'g+fg'}\\ \)</span></p>
+<p><span class="math notranslate nohighlight">\(\textbf{Quotient Rule:}\\ \)</span>
+<span class="math notranslate nohighlight">\(\boxed{\frac{d}{dx}\left(\frac{f}{g}\right)=\frac{gf'-fg'}{g^2}}\\ \)</span></p>
+<p><span class="math notranslate nohighlight">\(\textbf{Chain Rule:}\\ \)</span>
+<span class="math notranslate nohighlight">\(\boxed{\frac{d}{dx}\big[f(g(x))\big]=f'(g(x))\,g'(x)}\\ \)</span></p>
+<p><span class="math notranslate nohighlight">\(\textbf{Gradient Descent:}\\ \)</span>
+<span class="math notranslate nohighlight">\(\boxed{\frac{d}{dx}(x^2)=2x}\\ \)</span></p>
+<p><span class="math notranslate nohighlight">\(\boxed{\frac{d}{dx}(y-\hat y)^2=2(y-\hat y)(-\hat y')} \)</span></p>
+<hr class="docutils" />
+<p><span class="math notranslate nohighlight">\(\boxed{\frac{d}{dx}(x^n)=nx^{n-1}}\\ \)</span></p>
+<p><span class="math notranslate nohighlight">\(\boxed{\frac{d}{dx}(e^x)=e^x}\\ \)</span></p>
+<p><span class="math notranslate nohighlight">\(\boxed{\frac{d}{dx}(\ln x)=\frac1x}\\ \)</span></p>
+<p><span class="math notranslate nohighlight">\(\boxed{\frac{d}{dx}\sin x=\cos x}\\ \)</span></p>
+<p><span class="math notranslate nohighlight">\(\boxed{\frac{d}{dx}\cos x=-\sin x}\\ \)</span></p>
+<p><span class="math notranslate nohighlight">\(\boxed{\sigma'(x)=\sigma(x)(1-\sigma(x))}\\ \)</span></p>
+<p><span class="math notranslate nohighlight">\(\boxed{\frac{d}{d\hat y}(y-\hat y)^2=2(\hat y-y)}\\ \)</span></p>
+<p><span class="math notranslate nohighlight">\(\boxed{\frac{dL}{dw}=-2x(y-\hat y)} \\ \)</span></p>
+<hr class="docutils" />
+<p>These derivatives alone cover roughly <strong>80–90%</strong> of the mathematics encountered in <strong>Linear Regression, Logistic Regression, Neural Networks, Backpropagation, Deep Learning, and Computer Vision</strong>.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Week00"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../course/faq.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">FAQ</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="DL4CV_Week0.1.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Activation Functions for Deep Learning</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#em-deep-learning-for-computer-vision-em"><em>Deep Learning for Computer Vision<em></em></em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculus-derivatives-cheat-sheet">Calculus Derivatives Cheat Sheet</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-rules">Basic Rules</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exponential-functions">Exponential Functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logarithmic-functions">Logarithmic Functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trigonometric-functions">Trigonometric Functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inverse-trigonometric-functions">Inverse Trigonometric Functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hyperbolic-functions">Hyperbolic Functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#derivative-rules">Derivative Rules</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#common-composite-derivatives">Common Composite Derivatives</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#special-forms">Special Forms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#derivatives-for-machine-learning-and-computer-vision">Derivatives for Machine Learning and Computer Vision</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-polynomial-function">Example 1: Polynomial Function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-chain-rule">Example 2: Chain Rule</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-exponential-function">Example 3: Exponential Function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-logarithmic-function">Example 4: Logarithmic Function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Solution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-5-sigmoid-function">Example 5: Sigmoid Function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Solution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-6-mean-squared-error-mse">Example 6: Mean Squared Error (MSE)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Solution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-7-linear-regression-gradient">Example 7: Linear Regression Gradient</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Solution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-8-softmax-cross-entropy-simplified">Example 8: Softmax Cross Entropy (Simplified)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Solution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-ml-derivatives-summary">Key ML Derivatives Summary</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-memory-list-for-ml">Quick Memory List for ML</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Susheel Kumar Shukla
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

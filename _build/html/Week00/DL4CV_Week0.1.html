@@ -1,0 +1,1527 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Activation Functions for Deep Learning &#8212; DeepLearningforComputerVision-Notes</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Week00/DL4CV_Week0.1';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Week01: Introduction and Overview" href="../Week01/Introduction_and_Overview.html" />
+    <link rel="prev" title="Basics/pre-requisite for this course" href="DL4CV_Week0.0.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">DeepLearningforComputerVision-Notes</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Course Information</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../course/syllabus.html">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../course/software_setup.html">Software Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../course/reading_list.html">Reading List: Prescribed Books</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../course/faq.html">FAQ</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part I — Foundations</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="DL4CV_Week0.0.html">Basics/pre-requisite for this course</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Activation Functions for Deep Learning</a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Week01/Introduction_and_Overview.html">Week01: Introduction and Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Week02/Visual_Features_and_Representations.html">Week03: Visual Features and Representations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Week03/Visual_Matching.html">Week03: Visual Matching</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Week04/Deep_Learning_Review.html">Week04: Deep Learning Review</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part II — CNNs</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Week05/CNN_Architectures.html">Week05: CNN Architectures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Week06/CNN_Visualization_and_Interpretation.html">Week06: CNN Visualization and Interpretation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Week07/CNN_Detection_Segmentation_Recognition.html">Week07: CNN Detection Segmentation Recognition</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part III — Sequential Models</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Week08/RNNs_and_Video_Understanding.html">Week08: RNNs and Video Understanding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Week09/Attention_Models_and_Transformers.html">Week09: Attention Models and Transformers</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Part IV — Generative AI</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Week10/Deep_Generative_Models.html">Week10: Deep Generative Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Week11/Generative_Model_Applications.html">Week11: Generative Model Applications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Week12/Recent_Trends_in_Computer_Vision.html">Week12: Recent Trends in Computer Vision</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Final Project</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Final-Project/Final_Project.html">Final-Project</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Summary</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Summary/Summary.html">Summary and Cheatsheet</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/susheelshukla/DL4CV" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/susheelshukla/DL4CV/issues/new?title=Issue%20on%20page%20%2FWeek00/DL4CV_Week0.1.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Week00/DL4CV_Week0.1.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Activation Functions for Deep Learning</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Activation Functions for Deep Learning</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-learning-computer-vision-prerequisites">Machine Learning &amp; Computer Vision Prerequisites</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#why-do-we-need-activation-functions">Why Do We Need Activation Functions?</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-step-function">1. Binary Step Function</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formula">Formula</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#advantages">Advantages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#disadvantages">Disadvantages</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-activation">2. Linear Activation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Formula</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#derivative">Derivative</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem">Problem</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sigmoid-function">3. Sigmoid Function</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Formula</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#output-range">Output Range</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1">Example 1</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#answer">Answer</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2">Example 2</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Answer</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Derivative</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Example</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Answer</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Advantages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Disadvantages</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tanh-function">4. Tanh Function</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Formula</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Output Range</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Example</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Answer</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Example</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Answer</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Derivative</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Example</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Answer</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">Advantages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">Disadvantages</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#relu-rectified-linear-unit">5. ReLU (Rectified Linear Unit)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">Formula</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">Example 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">Example 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id24">Derivative</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id25">Example</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id26">Answer</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id27">Advantages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id28">Disadvantages</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#leaky-relu">6. Leaky ReLU</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id29">Formula</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id30">Example</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id31">Answer</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id32">Derivative</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#softmax-function">7. Softmax Function</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id33">Formula</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id34">Example</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1">Step 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2">Step 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3">Step 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#final-output">Final Output</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#activation-function-comparison">Activation Function Comparison</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#which-activation-function-should-i-use">Which Activation Function Should I Use?</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hidden-layers">Hidden Layers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-classification-output">Binary Classification Output</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-class-classification-output">Multi-Class Classification Output</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#interview-questions">Interview Questions</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-is-relu-popular">Why is ReLU popular?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-not-use-sigmoid-in-hidden-layers">Why not use Sigmoid in hidden layers?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-use-softmax">Why use Softmax?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#which-activation-is-most-common-in-modern-cnns">Which activation is most common in modern CNNs?</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="activation-functions-for-deep-learning">
+<h1>Activation Functions for Deep Learning<a class="headerlink" href="#activation-functions-for-deep-learning" title="Permalink to this heading">#</a></h1>
+<section id="machine-learning-computer-vision-prerequisites">
+<h2>Machine Learning &amp; Computer Vision Prerequisites<a class="headerlink" href="#machine-learning-computer-vision-prerequisites" title="Permalink to this heading">#</a></h2>
+<p>Activation functions introduce <strong>non-linearity</strong> into neural networks. Without them, a deep neural network behaves like a single linear model regardless of the number of layers.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="why-do-we-need-activation-functions">
+<h1>Why Do We Need Activation Functions?<a class="headerlink" href="#why-do-we-need-activation-functions" title="Permalink to this heading">#</a></h1>
+<p>Suppose a neuron computes:</p>
+<div class="math notranslate nohighlight">
+\[
+z = wx + b
+\]</div>
+<p>Without an activation function:</p>
+<div class="math notranslate nohighlight">
+\[
+y = z
+\]</div>
+<p>This is simply a linear equation.</p>
+<p>By applying an activation function:</p>
+<div class="math notranslate nohighlight">
+\[
+y = f(z)
+\]</div>
+<p>the network can learn complex nonlinear relationships.</p>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="binary-step-function">
+<h1>1. Binary Step Function<a class="headerlink" href="#binary-step-function" title="Permalink to this heading">#</a></h1>
+<section id="formula">
+<h2>Formula<a class="headerlink" href="#formula" title="Permalink to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+f(x)=
+\begin{cases}
+1, &amp; x \ge 0\\
+0, &amp; x &lt; 0
+\end{cases}
+\end{split}\]</div>
+</section>
+<section id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading">#</a></h2>
+<p>Find output for:</p>
+<div class="math notranslate nohighlight">
+\[
+x = 2
+\]</div>
+<p>Since</p>
+<div class="math notranslate nohighlight">
+\[
+2 \ge 0
+\]</div>
+<p>Output:</p>
+<div class="math notranslate nohighlight">
+\[
+f(2)=1
+\]</div>
+<hr class="docutils" />
+<p>Find output for:</p>
+<div class="math notranslate nohighlight">
+\[
+x=-3
+\]</div>
+<p>Since</p>
+<div class="math notranslate nohighlight">
+\[
+-3 &lt; 0
+\]</div>
+<p>Output:</p>
+<div class="math notranslate nohighlight">
+\[
+f(-3)=0
+\]</div>
+</section>
+<section id="advantages">
+<h2>Advantages<a class="headerlink" href="#advantages" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Very simple</p></li>
+<li><p>Useful in perceptrons</p></li>
+</ul>
+</section>
+<section id="disadvantages">
+<h2>Disadvantages<a class="headerlink" href="#disadvantages" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Not differentiable</p></li>
+<li><p>Cannot be used in backpropagation</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="linear-activation">
+<h1>2. Linear Activation<a class="headerlink" href="#linear-activation" title="Permalink to this heading">#</a></h1>
+<section id="id1">
+<h2>Formula<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[
+f(x)=x
+\]</div>
+</section>
+<section id="id2">
+<h2>Example<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<p>Input:</p>
+<div class="math notranslate nohighlight">
+\[
+x=5
+\]</div>
+<p>Output:</p>
+<div class="math notranslate nohighlight">
+\[
+f(5)=5
+\]</div>
+</section>
+<section id="derivative">
+<h2>Derivative<a class="headerlink" href="#derivative" title="Permalink to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[
+f'(x)=1
+\]</div>
+</section>
+<section id="problem">
+<h2>Problem<a class="headerlink" href="#problem" title="Permalink to this heading">#</a></h2>
+<p>No nonlinearity.</p>
+<p>Deep network becomes equivalent to a single layer.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="sigmoid-function">
+<h1>3. Sigmoid Function<a class="headerlink" href="#sigmoid-function" title="Permalink to this heading">#</a></h1>
+<p>One of the most important activation functions.</p>
+<section id="id3">
+<h2>Formula<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[
+\sigma(x)=
+\frac{1}{1+e^{-x}}
+\]</div>
+</section>
+<section id="output-range">
+<h2>Output Range<a class="headerlink" href="#output-range" title="Permalink to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[
+0 &lt; \sigma(x) &lt; 1
+\]</div>
+<p>Useful for probability prediction.</p>
+</section>
+<hr class="docutils" />
+<section id="example-1">
+<h2>Example 1<a class="headerlink" href="#example-1" title="Permalink to this heading">#</a></h2>
+<p>Input:</p>
+<div class="math notranslate nohighlight">
+\[
+x=0
+\]</div>
+<p>Substitute:</p>
+<div class="math notranslate nohighlight">
+\[
+\sigma(0)
+=
+\frac{1}{1+e^{0}}
+\]</div>
+<p>Since</p>
+<div class="math notranslate nohighlight">
+\[
+e^0=1
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\sigma(0)
+=
+\frac{1}{2}
+=
+0.5
+\]</div>
+<section id="answer">
+<h3>Answer<a class="headerlink" href="#answer" title="Permalink to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+\boxed{0.5}
+\]</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="example-2">
+<h2>Example 2<a class="headerlink" href="#example-2" title="Permalink to this heading">#</a></h2>
+<p>Input:</p>
+<div class="math notranslate nohighlight">
+\[
+x=2
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\sigma(2)
+=
+\frac{1}{1+e^{-2}}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+=
+\frac{1}{1+0.1353}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+=
+0.8808
+\]</div>
+<section id="id4">
+<h3>Answer<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+\boxed{0.8808}
+\]</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id5">
+<h2>Derivative<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<p>A famous result:</p>
+<div class="math notranslate nohighlight">
+\[
+\sigma'(x)
+=
+\sigma(x)(1-\sigma(x))
+\]</div>
+</section>
+<hr class="docutils" />
+<section id="id6">
+<h2>Example<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
+<p>If</p>
+<div class="math notranslate nohighlight">
+\[
+\sigma(x)=0.8
+\]</div>
+<p>Then</p>
+<div class="math notranslate nohighlight">
+\[
+\sigma'(x)
+=
+0.8(1-0.8)
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+=
+0.16
+\]</div>
+<section id="id7">
+<h3>Answer<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+\boxed{0.16}
+\]</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id8">
+<h2>Advantages<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Output interpretable as probability</p></li>
+<li><p>Smooth curve</p></li>
+</ul>
+</section>
+<section id="id9">
+<h2>Disadvantages<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Vanishing gradient problem</p></li>
+<li><p>Slow training</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="tanh-function">
+<h1>4. Tanh Function<a class="headerlink" href="#tanh-function" title="Permalink to this heading">#</a></h1>
+<section id="id10">
+<h2>Formula<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[
+\tanh(x)
+=
+\frac{e^x-e^{-x}}
+{e^x+e^{-x}}
+\]</div>
+</section>
+<section id="id11">
+<h2>Output Range<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[
+-1 &lt; \tanh(x) &lt; 1
+\]</div>
+</section>
+<hr class="docutils" />
+<section id="id12">
+<h2>Example<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h2>
+<p>Input:</p>
+<div class="math notranslate nohighlight">
+\[
+x=0
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\tanh(0)=0
+\]</div>
+<section id="id13">
+<h3>Answer<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+\boxed{0}
+\]</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id14">
+<h2>Example<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h2>
+<p>Input:</p>
+<div class="math notranslate nohighlight">
+\[
+x=1
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\tanh(1)
+=
+0.7616
+\]</div>
+<section id="id15">
+<h3>Answer<a class="headerlink" href="#id15" title="Permalink to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+\boxed{0.7616}
+\]</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id16">
+<h2>Derivative<a class="headerlink" href="#id16" title="Permalink to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[
+\tanh'(x)
+=
+1-\tanh^2(x)
+\]</div>
+</section>
+<hr class="docutils" />
+<section id="id17">
+<h2>Example<a class="headerlink" href="#id17" title="Permalink to this heading">#</a></h2>
+<p>If</p>
+<div class="math notranslate nohighlight">
+\[
+\tanh(x)=0.7616
+\]</div>
+<p>Then</p>
+<div class="math notranslate nohighlight">
+\[
+\tanh'(x)
+=
+1-(0.7616)^2
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+=
+0.42
+\]</div>
+<section id="id18">
+<h3>Answer<a class="headerlink" href="#id18" title="Permalink to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+\boxed{0.42}
+\]</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id19">
+<h2>Advantages<a class="headerlink" href="#id19" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Zero-centered output</p></li>
+<li><p>Better than Sigmoid</p></li>
+</ul>
+</section>
+<section id="id20">
+<h2>Disadvantages<a class="headerlink" href="#id20" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Still suffers from vanishing gradients</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="relu-rectified-linear-unit">
+<h1>5. ReLU (Rectified Linear Unit)<a class="headerlink" href="#relu-rectified-linear-unit" title="Permalink to this heading">#</a></h1>
+<p>Most widely used activation function.</p>
+<section id="id21">
+<h2>Formula<a class="headerlink" href="#id21" title="Permalink to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[
+f(x)=\max(0,x)
+\]</div>
+<p>or</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+f(x)=
+\begin{cases}
+0, &amp; x&lt;0\\
+x, &amp; x\ge0
+\end{cases}
+\end{split}\]</div>
+</section>
+<hr class="docutils" />
+<section id="id22">
+<h2>Example 1<a class="headerlink" href="#id22" title="Permalink to this heading">#</a></h2>
+<p>Input:</p>
+<div class="math notranslate nohighlight">
+\[
+x=5
+\]</div>
+<p>Output:</p>
+<div class="math notranslate nohighlight">
+\[
+f(5)=5
+\]</div>
+</section>
+<hr class="docutils" />
+<section id="id23">
+<h2>Example 2<a class="headerlink" href="#id23" title="Permalink to this heading">#</a></h2>
+<p>Input:</p>
+<div class="math notranslate nohighlight">
+\[
+x=-4
+\]</div>
+<p>Output:</p>
+<div class="math notranslate nohighlight">
+\[
+f(-4)=0
+\]</div>
+</section>
+<hr class="docutils" />
+<section id="id24">
+<h2>Derivative<a class="headerlink" href="#id24" title="Permalink to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+f'(x)=
+\begin{cases}
+0, &amp; x&lt;0\\
+1, &amp; x&gt;0
+\end{cases}
+\end{split}\]</div>
+</section>
+<hr class="docutils" />
+<section id="id25">
+<h2>Example<a class="headerlink" href="#id25" title="Permalink to this heading">#</a></h2>
+<p>Input:</p>
+<div class="math notranslate nohighlight">
+\[
+x=3
+\]</div>
+<p>Derivative:</p>
+<div class="math notranslate nohighlight">
+\[
+f'(3)=1
+\]</div>
+<section id="id26">
+<h3>Answer<a class="headerlink" href="#id26" title="Permalink to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+\boxed{1}
+\]</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id27">
+<h2>Advantages<a class="headerlink" href="#id27" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Fast computation</p></li>
+<li><p>Reduces vanishing gradients</p></li>
+<li><p>Most popular hidden layer activation</p></li>
+</ul>
+</section>
+<section id="id28">
+<h2>Disadvantages<a class="headerlink" href="#id28" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Dead ReLU problem</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="leaky-relu">
+<h1>6. Leaky ReLU<a class="headerlink" href="#leaky-relu" title="Permalink to this heading">#</a></h1>
+<p>Improves ReLU.</p>
+<section id="id29">
+<h2>Formula<a class="headerlink" href="#id29" title="Permalink to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+f(x)=
+\begin{cases}
+x,&amp; x&gt;0\\
+\alpha x,&amp; x&lt;0
+\end{cases}
+\end{split}\]</div>
+<p>Typically</p>
+<div class="math notranslate nohighlight">
+\[
+\alpha=0.01
+\]</div>
+</section>
+<hr class="docutils" />
+<section id="id30">
+<h2>Example<a class="headerlink" href="#id30" title="Permalink to this heading">#</a></h2>
+<p>Input:</p>
+<div class="math notranslate nohighlight">
+\[
+x=-5
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+f(-5)
+=
+0.01(-5)
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+=
+-0.05
+\]</div>
+<section id="id31">
+<h3>Answer<a class="headerlink" href="#id31" title="Permalink to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+\boxed{-0.05}
+\]</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id32">
+<h2>Derivative<a class="headerlink" href="#id32" title="Permalink to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+f'(x)=
+\begin{cases}
+1,&amp; x&gt;0\\
+0.01,&amp; x&lt;0
+\end{cases}
+\end{split}\]</div>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="softmax-function">
+<h1>7. Softmax Function<a class="headerlink" href="#softmax-function" title="Permalink to this heading">#</a></h1>
+<p>Used in multi-class classification.</p>
+<section id="id33">
+<h2>Formula<a class="headerlink" href="#id33" title="Permalink to this heading">#</a></h2>
+<p>For class i:</p>
+<div class="math notranslate nohighlight">
+\[
+P_i
+=
+\frac{e^{z_i}}
+{\sum_{j=1}^{n}e^{z_j}}
+\]</div>
+</section>
+<hr class="docutils" />
+<section id="id34">
+<h2>Example<a class="headerlink" href="#id34" title="Permalink to this heading">#</a></h2>
+<p>Suppose logits are:</p>
+<div class="math notranslate nohighlight">
+\[
+[2,1,0]
+\]</div>
+<section id="step-1">
+<h3>Step 1<a class="headerlink" href="#step-1" title="Permalink to this heading">#</a></h3>
+<p>Compute exponentials:</p>
+<div class="math notranslate nohighlight">
+\[
+e^2=7.389
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+e^1=2.718
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+e^0=1
+\]</div>
+</section>
+<section id="step-2">
+<h3>Step 2<a class="headerlink" href="#step-2" title="Permalink to this heading">#</a></h3>
+<p>Sum:</p>
+<div class="math notranslate nohighlight">
+\[
+7.389+2.718+1
+=
+11.107
+\]</div>
+</section>
+<section id="step-3">
+<h3>Step 3<a class="headerlink" href="#step-3" title="Permalink to this heading">#</a></h3>
+<p>Probabilities</p>
+<p>Class 1:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{7.389}{11.107}
+=
+0.665
+\]</div>
+<p>Class 2:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{2.718}{11.107}
+=
+0.245
+\]</div>
+<p>Class 3:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{1}{11.107}
+=
+0.090
+\]</div>
+</section>
+<section id="final-output">
+<h3>Final Output<a class="headerlink" href="#final-output" title="Permalink to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+[0.665,\;0.245,\;0.090]
+\]</div>
+<p>Check:</p>
+<div class="math notranslate nohighlight">
+\[
+0.665+0.245+0.090
+=
+1
+\]</div>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="activation-function-comparison">
+<h1>Activation Function Comparison<a class="headerlink" href="#activation-function-comparison" title="Permalink to this heading">#</a></h1>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Function</p></th>
+<th class="head"><p>Range</p></th>
+<th class="head"><p>Differentiable</p></th>
+<th class="head"><p>Typical Use</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Binary Step</p></td>
+<td><p>0,1</p></td>
+<td><p>No</p></td>
+<td><p>Perceptron</p></td>
+</tr>
+<tr class="row-odd"><td><p>Linear</p></td>
+<td><p>(-∞,∞)</p></td>
+<td><p>Yes</p></td>
+<td><p>Regression Output</p></td>
+</tr>
+<tr class="row-even"><td><p>Sigmoid</p></td>
+<td><p>(0,1)</p></td>
+<td><p>Yes</p></td>
+<td><p>Binary Classification</p></td>
+</tr>
+<tr class="row-odd"><td><p>Tanh</p></td>
+<td><p>(-1,1)</p></td>
+<td><p>Yes</p></td>
+<td><p>Hidden Layers (Older Networks)</p></td>
+</tr>
+<tr class="row-even"><td><p>ReLU</p></td>
+<td><p>[0,∞)</p></td>
+<td><p>Yes</p></td>
+<td><p>Hidden Layers</p></td>
+</tr>
+<tr class="row-odd"><td><p>Leaky ReLU</p></td>
+<td><p>(-∞,∞)</p></td>
+<td><p>Yes</p></td>
+<td><p>Hidden Layers</p></td>
+</tr>
+<tr class="row-even"><td><p>Softmax</p></td>
+<td><p>(0,1)</p></td>
+<td><p>Yes</p></td>
+<td><p>Multi-class Output</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="which-activation-function-should-i-use">
+<h1>Which Activation Function Should I Use?<a class="headerlink" href="#which-activation-function-should-i-use" title="Permalink to this heading">#</a></h1>
+<section id="hidden-layers">
+<h2>Hidden Layers<a class="headerlink" href="#hidden-layers" title="Permalink to this heading">#</a></h2>
+<p>Use:</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{\text{ReLU}}
+\]</div>
+<p>or</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{\text{Leaky ReLU}}
+\]</div>
+</section>
+<hr class="docutils" />
+<section id="binary-classification-output">
+<h2>Binary Classification Output<a class="headerlink" href="#binary-classification-output" title="Permalink to this heading">#</a></h2>
+<p>Use:</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{\text{Sigmoid}}
+\]</div>
+<p>Example:</p>
+<ul class="simple">
+<li><p>Cat vs Dog</p></li>
+<li><p>Spam vs Not Spam</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="multi-class-classification-output">
+<h2>Multi-Class Classification Output<a class="headerlink" href="#multi-class-classification-output" title="Permalink to this heading">#</a></h2>
+<p>Use:</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{\text{Softmax}}
+\]</div>
+<p>Example:</p>
+<ul class="simple">
+<li><p>Digits 0-9</p></li>
+<li><p>ImageNet Classes</p></li>
+<li><p>Object Recognition</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="interview-questions">
+<h1>Interview Questions<a class="headerlink" href="#interview-questions" title="Permalink to this heading">#</a></h1>
+<section id="why-is-relu-popular">
+<h2>Why is ReLU popular?<a class="headerlink" href="#why-is-relu-popular" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Computationally efficient</p></li>
+<li><p>Less vanishing gradient</p></li>
+<li><p>Faster convergence</p></li>
+</ul>
+</section>
+<section id="why-not-use-sigmoid-in-hidden-layers">
+<h2>Why not use Sigmoid in hidden layers?<a class="headerlink" href="#why-not-use-sigmoid-in-hidden-layers" title="Permalink to this heading">#</a></h2>
+<p>Because gradients become very small for large positive or negative values.</p>
+</section>
+<section id="why-use-softmax">
+<h2>Why use Softmax?<a class="headerlink" href="#why-use-softmax" title="Permalink to this heading">#</a></h2>
+<p>Converts raw scores into probabilities that sum to 1.</p>
+</section>
+<section id="which-activation-is-most-common-in-modern-cnns">
+<h2>Which activation is most common in modern CNNs?<a class="headerlink" href="#which-activation-is-most-common-in-modern-cnns" title="Permalink to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[
+\boxed{\text{ReLU}}
+\]</div>
+<p>Used in:</p>
+<ul class="simple">
+<li><p>AlexNet</p></li>
+<li><p>VGG</p></li>
+<li><p>ResNet</p></li>
+<li><p>YOLO</p></li>
+<li><p>EfficientNet</p></li>
+</ul>
+<p><img alt="image.png" src="Week00/attachment:image.png" /></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Week00"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="DL4CV_Week0.0.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Basics/pre-requisite for this course</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../Week01/Introduction_and_Overview.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Week01: Introduction and Overview</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Activation Functions for Deep Learning</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-learning-computer-vision-prerequisites">Machine Learning &amp; Computer Vision Prerequisites</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#why-do-we-need-activation-functions">Why Do We Need Activation Functions?</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-step-function">1. Binary Step Function</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formula">Formula</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#advantages">Advantages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#disadvantages">Disadvantages</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-activation">2. Linear Activation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Formula</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#derivative">Derivative</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem">Problem</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sigmoid-function">3. Sigmoid Function</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Formula</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#output-range">Output Range</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1">Example 1</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#answer">Answer</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2">Example 2</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Answer</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Derivative</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Example</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Answer</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Advantages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Disadvantages</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tanh-function">4. Tanh Function</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Formula</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Output Range</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Example</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Answer</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Example</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Answer</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Derivative</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Example</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Answer</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">Advantages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">Disadvantages</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#relu-rectified-linear-unit">5. ReLU (Rectified Linear Unit)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">Formula</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">Example 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">Example 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id24">Derivative</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id25">Example</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id26">Answer</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id27">Advantages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id28">Disadvantages</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#leaky-relu">6. Leaky ReLU</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id29">Formula</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id30">Example</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id31">Answer</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id32">Derivative</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#softmax-function">7. Softmax Function</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id33">Formula</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id34">Example</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1">Step 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2">Step 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3">Step 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#final-output">Final Output</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#activation-function-comparison">Activation Function Comparison</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#which-activation-function-should-i-use">Which Activation Function Should I Use?</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hidden-layers">Hidden Layers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-classification-output">Binary Classification Output</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-class-classification-output">Multi-Class Classification Output</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#interview-questions">Interview Questions</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-is-relu-popular">Why is ReLU popular?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-not-use-sigmoid-in-hidden-layers">Why not use Sigmoid in hidden layers?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-use-softmax">Why use Softmax?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#which-activation-is-most-common-in-modern-cnns">Which activation is most common in modern CNNs?</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Susheel Kumar Shukla
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
